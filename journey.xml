@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<account
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="schema.xsd">
+<journeys>
+  <journey>
+    <title>Writing a master thesis</title>
+    <goal>Write a good master thesis at VSR</goal>
+    <steps>
+      <step
+        startDate="2017-10-01" endDate="2017-10-15"
+        >
+        <stepTitle>Find Topic</stepTitle>
+        <objective done="true">Find new topic related to project management</objective>
+        <problemStatement>
+          There are a lot of approaches in business and project management, but there are always problems when using the different
+          project management tools, because the don't align the employees, project goal and managers togather. Also they are very complicated to use.
+          there are a lot of difinitions like programs, project, objectives, goals, purpose, etc ... but even expreienced managers fail sometimes in thier work,
+          because they don't understand these concepts well or they use it in wrong way.
+        </problemStatement>
+        <results>
+          <result achieved="false">
+            <resultTitle>Well defined topic that has not been studied in VSR in the last 5 years </resultTitle>
+            <tasks>
+              <task assignee="student1" done="not">
+                <taskTitle>Ask for a list of topics that have been studied in VSR in the last 5 years.</taskTitle>
+              </task>
+              <task assignee="student1" done="not">
+                <taskTitle> Looking inside the different approaches in project management</taskTitle>
+              </task>
+              <task assignee="student1" done="not">
+                <taskTitle>Have a deep look on OKRs, defining thier pros and cons.</taskTitle>
+              </task>
+            </tasks>
+          </result>
+        </results>
+      </step>
+
+      <step
+        startDate="2017-10-15" endDate="2017-10-20"
+        >
+        <stepTitle>Create Vision Doc</stepTitle>
+        <objective done="false">create a well defined vision document </objective>
+        <problemStatement>
+          There are always missconception and misundertanding between what the student wants or sees and what professorship
+          wants or sees, and therefore it's important that each party understands and agreeds on the same ideas
+          to avoid any problem could appear later.
+      </problemStatement>
+        <results>
+          <result achieved="false">
+            <resultTitle>Well defined vision Doc. from 2 pages, describes the situation, the problem and the solution idea.</resultTitle>
+            <tasks>
+              <task assignee="student" done="not">
+                <taskTitle>Describe the current situation</taskTitle>
+              </task>
+              <task assignee="student" done="not">
+                <taskTitle>Describe what the current problem</taskTitle>
+              </task>
+              <task assignee="student" done="not">
+                <taskTitle>describe how we are going to solve the problem</taskTitle>
+              </task>
+            </tasks>
+          </result>
+        </results>
+      </step>
+
+      <step
+        startDate="2017-10-20" endDate="2017-10-27"
+        >
+        <stepTitle>Send to VSR</stepTitle>
+        <objective done="false">Get a refinded Copy of vision document</objective>
+        <problemStatement>
+          Students always need to know if there vision is right or even if it's compatible with the vision of VSR.
+        </problemStatement>
+        <results>
+          <result achieved="false">
+            <resultTitle>get a signed feedback from VSR within 2 weeks </resultTitle>
+            <tasks>
+              <task assignee="student" done="not">
+                <taskTitle>send vision doc. to vsr in email</taskTitle>
+              </task>
+              <task assignee="vsr" done="not">
+                <taskTitle>read the vision doc. and send back feedback to the student</taskTitle>
+              </task>
+            </tasks>
+          </result>
+        </results>
+      </step>
+
+      <step
+        startDate="2017-10-27" endDate="2017-10-30"
+        >
+        <stepTitle>Task Desc.</stepTitle>
+        <objective done="false">Create a task describtion documnet and send it to the student</objective>
+        <problemStatement>
+          In this phase a lot of students do not know how to start or what they have actually to do, and that leads later to delay or
+          a lot of unneeded work, therefore a task describtion document can save a lot of time and effort.
+        </problemStatement>
+        <results>
+          <result achieved="false">
+            <resultTitle>A task describtion document from x pages signed from VSR contains y,z,f...</resultTitle>
+            <tasks>
+              <task assignee="VSR" done="not">
+                <taskTitle>
+                  make something in order to make this doc.
+                </taskTitle>
+              </task>
+              <task assignee="VSR" done="not">
+                <taskTitle>
+                  send this file to student per email.
+                </taskTitle>
+              </task>
+            </tasks>
+          </result>
+        </results>
+      </step>
+
+      <step
+        startDate="2017-10-30" endDate="2017-11-03"
+        >
+        <stepTitle>Student confirmation</stepTitle>
+        <objective done="false">Get a confirmation on the task desc. doc. from student </objective>
+        <problemStatement>
+          In order to avoid problems in the future, something like the student did know what his tasks are
+          or the student or VSR said that is not what we agreed on, signed confirmation from the student is required.
+        </problemStatement>
+        <results>
+          <result achieved="false">
+            <resultTitle>
+              Signed confirmation from the student on the task desc. withing the next x days
+            </resultTitle>
+            <tasks>
+              <task assignee="student" done="not">
+                <taskTitle>Read and confirm the task desc. doc.</taskTitle>
+              </task>
+            </tasks>
+          </result>
+        </results>
+      </step>
+
+      <step
+        startDate="2017-11-03" endDate="2017-11-10"
+        >
+        <stepTitle>Reg. ZPA</stepTitle>
+        <objective done="false">Registre the Master thesis at ZPA.</objective>
+        <problemStatement>
+          The ZPA must know which thesis by whom is perforemed, many students don't know that the have deadline for thier master thesis!
+          Sure there is a problem here which I don't know!!
+        </problemStatement>
+        <results>
+          <result achieved="false">
+            <resultTitle> Getting a confirmation and signed paper from ZPA for the master thesis.</resultTitle>
+            <tasks>
+              <task assignee="VSR" done="not">
+                <taskTitle>
+                  Send the docs to ZPA
+                </taskTitle>
+              </task>
+              <task assignee="VSR" done="not">
+                <taskTitle>
+                  Maybe there are more tasks which we don't know!
+                </taskTitle>
+              </task>
+            </tasks>
+          </result>
+        </results>
+      </step>
+
+      <step
+        startDate="2017-11-10" endDate="2018-03-20"
+        >
+        <stepTitle>Writing the thesis</stepTitle>
+        <objective done="false">Writing a significant master thesis</objective>
+        <problemStatement></problemStatement>
+        <subJourney>
+          <title>Writing a master thesis</title>
+          <goal>Write a good master thesis at VSR</goal>
+          <steps>
+            <step
+              startDate="2017-11-10" endDate="2017-11-10"
+              >
+              <stepTitle>Step 1 in writing thesis</stepTitle>
+              <objective done="false">Find new topic related to business management</objective>
+              <problemStatement></problemStatement>
+              <results>
+                <result achieved="false">
+                  <resultTitle></resultTitle>
+                  <tasks>
+                    <task assignee="" done="not">
+                      <taskTitle></taskTitle>
+                    </task>
+                  </tasks>
+                </result>
+              </results>
+            </step>
+          </steps>
+        </subJourney>
+      </step>
+
+      <step
+        startDate="2018-03-22" endDate="2018-03-24"
+        >
+        <stepTitle>Print it</stepTitle>
+        <objective done="false">Having printed copies of the master thesis</objective>
+        <problemStatement>
+          Some problem statement also here
+        </problemStatement>
+        <results>
+          <result achieved="false">
+            <resultTitle>3 A4 printed copies of the master thesis with a blue cover and the name of the student on it.</resultTitle>
+            <tasks>
+              <task assignee="student" done="not">
+                <taskTitle>Find an affordable print service with a good quality</taskTitle>
+              </task>
+              <task assignee="student" done="not">
+                <taskTitle>make 3 copies of it and send one of them in post to VST or give it by hand</taskTitle>
+              </task>
+            </tasks>
+          </result>
+          <result achieved="false">
+            <resultTitle>Giving a copy to VSR at most in the end of April!</resultTitle>
+            <tasks>
+              <task assignee="student" done="not">
+                <taskTitle>send one copy in post to VSR or give it by hand</taskTitle>
+              </task>
+            </tasks>
+          </result>
+        </results>
+      </step>
+
+      <step
+        startDate="2018-03-22" endDate="2018-03-29"
+        >
+        <stepTitle>Create Presentation</stepTitle>
+        <objective done="false">Having a very good presentation</objective>
+        <problemStatement>
+          A lot of presentations are boring and not well formated, some students also make a very long or very short presentation
+          because they don't know how a god presentation looks like.
+        </problemStatement>
+
+        <results>
+
+          <result achieved="false">
+            <resultTitle>
+              Having around 30-40 slides and each slide must not contain more than 40 words!
+            </resultTitle>
+            <tasks>
+              <task assignee="student" done="not">
+                <taskTitle></taskTitle>
+              </task>
+            </tasks>
+          </result>
+
+          <result achieved="false">
+            <resultTitle>Embading 3 diagrams about (x) inside the slides</resultTitle>
+            <tasks>
+              <task assignee="" done="not">
+                <taskTitle></taskTitle>
+              </task>
+            </tasks>
+          </result>
+
+          <result achieved="false">
+            <resultTitle>Create a vidoe that illustrates how the tool can be used and must not be longer than 3 minutes</resultTitle>
+            <tasks>
+              <task assignee="student" done="not">
+                <taskTitle>define the main ideas of the video </taskTitle>
+              </task>
+              <task assignee="student" done="not">
+                <taskTitle>Write a script to be recorded </taskTitle>
+              </task>
+              <task assignee="companyX" done="not">
+                <taskTitle>record the voice by X </taskTitle>
+              </task>
+              <task assignee="student" done="not">
+                <taskTitle>create small videos from inside our tool, using a screen recorder tool of our chioce</taskTitle>
+              </task>
+              <task assignee="student" done="not">
+                <taskTitle>merge and syncronise between voice and video</taskTitle>
+              </task>
+            </tasks>
+          </result>
+
+          <result achieved="false">
+            <resultTitle>Each slide should have page number, and footer of the VSR and TU Chemnitz </resultTitle>
+            <tasks>
+              <task assignee="student" done="not">
+                <taskTitle>Get the footer of VSR and TU Chemnitz from the web page of VSR and using them inside powerpoint</taskTitle>
+              </task>
+            </tasks>
+          </result>
+
+          <result achieved="false">
+            <resultTitle>Student must train on doing the Presentation 3 times before the defence </resultTitle>
+            <tasks>
+              <task assignee="student" done="not">
+                <taskTitle></taskTitle>
+              </task>
+            </tasks>
+          </result>
+
+        </results>
+
+      </step>
+
+      <step
+        startDate="2018-04-01" endDate="2018-04-01"
+        >
+        <stepTitle>Defence</stepTitle>
+        <objective done="false">Find new topic related to business management</objective>
+        <problemStatement></problemStatement>
+        <results>
+          <result achieved="false">
+            <resultTitle></resultTitle>
+            <tasks>
+              <task assignee="student" done="not">
+                <taskTitle></taskTitle>
+              </task>
+            </tasks>
+          </result>
+        </results>
+      </step>
+
+    </steps>
+  </journey>
+</journeys>
+</account>
