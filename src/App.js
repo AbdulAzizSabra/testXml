@@ -1,44 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Grid, Row, Col, PageHeader } from 'react-bootstrap';
 import Journeys from './Journeys';
-import convert from 'xml-js';
+import { fetchJourney } from './actions';
 
 class App extends Component {
-  constructor(props){
-    super(props)
-    this.state ={
-      journeys: null
-    }
-  }
-  
-  componentWillMount() {    
-    let xhttp = new XMLHttpRequest();
-    xhttp.open('GET', 'journey.xml', false);
-    xhttp.send();
-    const responseText = xhttp.responseText;
-    let resultObject = convert.xml2json(responseText, {
-      compact: true,
-      spaces: 4
-    });
-    
-    const parsedResult = JSON.parse(resultObject)
-    const { journeys } = parsedResult.account
-    this.setState({journeys: journeys})  
+  componentDidMount() {
+    this.props.fetchJourney();
   }
 
   render() {
+    if (!this.props.journeys) return 'Loading';
     return (
       <div>
         <Grid>
-        <Row className="show-grid">
-          <Col xs={12}>
-          <PageHeader>Journeys</PageHeader>
-          </Col>
-        </Row>
+          <Row className="show-grid">
+            <Col xs={12}>
+              <PageHeader>Journeys</PageHeader>
+            </Col>
+          </Row>
         </Grid>
-        <Journeys journeys={this.state.journeys} />
+        <Journeys journeys={this.props.journeys} {...this.props} />
       </div>
     );
   }
 }
-export { App };
+
+function mapStateToProps({ journeys }) {
+  return { journeys };
+}
+export default connect(mapStateToProps, { fetchJourney })(App);
