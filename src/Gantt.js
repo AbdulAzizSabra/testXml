@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import 'dhtmlx-gantt';
 import 'dhtmlx-gantt/codebase/dhtmlxgantt.css';
 
@@ -8,7 +9,8 @@ class Gantt extends Component {
       data: [],
       links: [{ id: 1, source: 2, target: 1, type: '0' }]
     };
-    this.props.steps.forEach((step, index) => {
+
+    this.props.journeys[0].steps.step.forEach((step, index) => {
       let days = this.diffDays(
         step._attributes.startDate,
         step._attributes.endDate
@@ -83,14 +85,19 @@ class Gantt extends Component {
     }
   }
   render() {
+    if (!this.props.journeys) return 'loading...';
     return (
       <div
         ref={input => {
           this.ganttContainer = input;
         }}
-        style={{ width: '100%', height: '100%' }}
+        style={{ width: '100%', height: '500px' }}
       />
     );
   }
 }
-export { Gantt };
+
+function mapStateToProps({ journeys }) {
+  return { journeys };
+}
+export default connect(mapStateToProps)(Gantt);

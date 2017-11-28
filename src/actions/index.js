@@ -1,8 +1,10 @@
 import convert from 'xml-js';
 
 export const FETCH_JOURNEY = 'fetch_journey';
+export const HEADER_SELECT = 'header_select';
 
 export function fetchJourney() {
+  let payload = [];
   let xhttp = new XMLHttpRequest();
   xhttp.open('GET', 'journey.xml', false);
   xhttp.send();
@@ -15,9 +17,20 @@ export function fetchJourney() {
   const parsedResult = JSON.parse(resultObject);
 
   const { journeys } = parsedResult.account;
+  if (!Array.isArray(journeys.journey)) {
+    payload.push(journeys.journey);
+  } else payload = journeys.journey;
+  console.log(payload);
   return {
     type: FETCH_JOURNEY,
-    payload: journeys
+    payload
+  };
+}
+
+export function headerSelect(title) {
+  return {
+    type: HEADER_SELECT,
+    payload: title
   };
 }
 
@@ -32,8 +45,8 @@ export function calculateDetails(journey) {
       if (element.hasOwnProperty('results')) {
         const resultsAnalyse = analyseResults(element.results);
         if (resultsAnalyse) {
-          allResults += resultsAnalyse.all;
-          achievedResults += resultsAnalyse.done;
+          allResults += resultsAnalyse.allResults;
+          achievedResults += resultsAnalyse.doneResults;
           stepsDetails.push({
             index,
             ...resultsAnalyse
@@ -47,19 +60,15 @@ export function calculateDetails(journey) {
     if (journey.steps.step.hasOwnProperty('results')) {
       const resultsAnalyse = analyseResults(journey.steps.step.results);
       if (resultsAnalyse) {
-        allResults += resultsAnalyse.all;
-        achievedResults += resultsAnalyse.done;
+        allResults += resultsAnalyse.allResults;
+        achievedResults += resultsAnalyse.doneResults;
         stepsDetails.push({
-          index: 0,
+          index: journey._attributes.id,
           ...resultsAnalyse
         });
       }
     }
   }
-  console.log('ahcievedObjectives', achievedObjectives);
-  console.log('allResults', allResults);
-  console.log('achievedResults', achievedResults);
-  console.log('stepsDetails', stepsDetails);
 
   return {
     type: 'details',
@@ -68,7 +77,7 @@ export function calculateDetails(journey) {
       allResults,
       achievedResults,
       stepsDetails,
-      title: journey.title
+      id: journey._attributes.id
     }
   };
 
@@ -112,22 +121,18 @@ export function calculateDetails(journey) {
     if (Array.isArray(tasks.task)) {
       tasks.task.forEach(task => {
         all++;
-        switch (task._attributes.achieved) {
-          case 'done':
-            done++;
-            break;
-          case 'inprogress':
-            inProgress++;
+        if (task._attributes.done === 'done') {
+          done++;
+        } else if (task._attributes.done === 'inprogress') {
+          inProgress++;
         }
       });
     } else {
       all = 1;
-      switch (tasks.task._attributes.achieved) {
-        case 'done':
-          done++;
-          break;
-        case 'inprogress':
-          inProgress++;
+      if (tasks.task._attributes.done === 'done') {
+        done++;
+      } else if (tasks.task._attributes.done === 'inprogress') {
+        inProgress++;
       }
     }
 

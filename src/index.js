@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Router, Route } from 'react-router-dom';
+import { BrowserRouter, Router, Route, Switch } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import App from './App';
+import Steps from './Steps';
 import reducers from './reducers';
+import Gantt from './Gantt';
 
 const store = createStore(reducers);
 

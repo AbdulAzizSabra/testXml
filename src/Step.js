@@ -1,90 +1,89 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+//
+import React from 'react';
+import Comp1 from './components/Comp1';
 import {
-  Button,
-  Collapse,
-  Panel,
-  Well,
+  Accordion,
+  Icon,
+  Divider,
+  Segment,
+  Header,
   Label,
-  Grid,
-  Row,
-  Col
-} from 'react-bootstrap';
-import Results from './Results';
-import Journey from './Journey';
+  Tab,
+  Menu,
+  List,
+  Form,
+  Image,
+  Checkbox
+} from 'semantic-ui-react';
 
-class Step extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { open: false };
-  }
-
-  renderResults() {
-    let renderedResults = null;
-
-    if (this.props.step.hasOwnProperty('results')) {
-      renderedResults = (
-        <Panel header="Results" bsStyle="primary">
-          <Results results={this.props.step.results} />
-        </Panel>
-      );
-    } else if (this.props.step.hasOwnProperty('subJourney')) {
-      renderedResults = (
-        <Panel header="Sub Journey" bsStyle="primary">
-          <Grid>
-            <Row>
-              <Col xs={10}>
-                <Journey journey={this.props.step.subJourney} />
-              </Col>
-            </Row>
-          </Grid>
-        </Panel>
-      );
-    }
-
-    return renderedResults;
-  }
-
+export class StepDetails extends React.Component {
   render() {
-    if (!this.props.details) return 'Loading...';
-    console.log(this.props.details);
-    const { step } = this.props;
-    const doneStyle =
-      step.objective._attributes.done === 'true' ? 'success' : 'danger';
-    return (
-      <div>
-        <Button onClick={() => this.setState({ open: !this.state.open })}>
-          {step.stepTitle._text}
-        </Button>
-        <Collapse in={this.state.open}>
-          <div>
-            <Well>
-              <Panel header="Objective" bsStyle="primary">
-                {step.objective._text} &nbsp;{step.objective._attributes.done ==
-                'true' ? (
-                  <Label bsStyle="success">Achieved</Label>
-                ) : (
-                  <Label bsStyle="danger">Not achieved</Label>
-                )}
-              </Panel>
+    const panes = [
+      {
+        menuItem: (
+          <Menu.Item>
+            Result 1 &nbsp; <Icon color="green" name="checkmark" />
+          </Menu.Item>
+        ),
+        render: () => <Tab.Pane>Tab 1 Content</Tab.Pane>
+      },
+      {
+        menuItem: 'Tab 2',
+        render: () => (
+          <Tab.Pane>
+            <List vertical>
+              <List.Item>
+                <Image
+                  avatar
+                  src="https://react.semantic-ui.com/assets/images/avatar/small/tom.jpg"
+                />
+                <List.Content>
+                  <List.Header>Tom</List.Header>
+                  <div>
+                    <Form.Field
+                      inline={true}
+                      control={Checkbox}
+                      label="Task Title"
+                    />
+                  </div>
+                </List.Content>
+              </List.Item>
+              <List.Item>
+                <Image
+                  avatar
+                  src="https://react.semantic-ui.com/assets/images/avatar/small/tom.jpg"
+                />
+                <List.Content>
+                  <List.Header>Tom</List.Header>
+                  <div>
+                    <Form.Field
+                      inline={true}
+                      control={Checkbox}
+                      onClick={e => console.log(e.target)}
+                      label="Task Title"
+                    />
+                  </div>
+                </List.Content>
+              </List.Item>
+            </List>
+          </Tab.Pane>
+        )
+      },
+      { menuItem: 'Tab 3', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> }
+    ];
 
-              <Panel header="Problem" bsStyle="warning">
-                {step.problemStatement._text}
-              </Panel>
-              <Panel header="Start Date and end Date" bsStyle="info">
-                {step._attributes.startDate} -----> {step._attributes.endDate}
-              </Panel>
-              {this.renderResults()}
-            </Well>
-          </div>
-        </Collapse>
-      </div>
-    );
+    return [
+      <Segment color="red">
+        <Header> Problem Statement</Header>
+        <p>{this.props.step.problemStatement}</p>
+      </Segment>,
+      <Segment color="blue">
+        <Header>Results</Header>
+        <Tab
+          menu={{ fluid: true, vertical: true, tabular: 'right' }}
+          panes={panes}
+        />
+      </Segment>
+    ];
   }
 }
-
-function mapStateToProps({ details }) {
-  return { details };
-}
-
-export default connect(mapStateToProps)(Step);

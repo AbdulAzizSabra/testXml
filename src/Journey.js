@@ -9,7 +9,6 @@ import { calculateDetails } from './actions';
 class Journey extends React.Component {
   componentDidMount() {
     this.props.calculateDetails(this.props.journey);
-    //console.log(this.props.journey);
   }
   render() {
     const { journey } = this.props;

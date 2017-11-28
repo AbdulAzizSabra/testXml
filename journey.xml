@@ -4,12 +4,12 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="schema.xsd">
 <journeys>
-  <journey>
-    <title>Writing a master thesis</title>
+  <journey id="master" type="seq">
+    <title>Writing a master thesis Journey</title>
     <goal>Write a good master thesis at VSR</goal>
     <steps>
       <step
-        startDate="2017-10-01" endDate="2017-10-15"
+        startDate="2017-10-01" endDate="2017-10-15" duration="2"
         >
         <stepTitle>Find Topic</stepTitle>
         <objective done="true">Find new topic related to project management</objective>
@@ -38,7 +38,7 @@ xsi:schemaLocation="schema.xsd">
       </step>
 
       <step
-        startDate="2017-10-15" endDate="2017-10-20"
+        startDate="2017-10-15" endDate="2017-10-20" duration="2"
         >
         <stepTitle>Create Vision Doc</stepTitle>
         <objective done="true">create a well defined vision document </objective>
@@ -66,7 +66,7 @@ xsi:schemaLocation="schema.xsd">
       </step>
 
       <step
-        startDate="2017-10-20" endDate="2017-10-27"
+        startDate="2017-10-20" endDate="2017-10-27" duration="2"
         >
         <stepTitle>Send to VSR</stepTitle>
         <objective done="true">Get a refinded Copy of vision document</objective>
@@ -89,7 +89,7 @@ xsi:schemaLocation="schema.xsd">
       </step>
 
       <step
-        startDate="2017-10-27" endDate="2017-10-30"
+        startDate="2017-10-27" endDate="2017-10-30" duration="2"
         >
         <stepTitle>Task Desc.</stepTitle>
         <objective done="false">Create a task describtion documnet and send it to the student</objective>
@@ -117,7 +117,7 @@ xsi:schemaLocation="schema.xsd">
       </step>
 
       <step
-        startDate="2017-10-30" endDate="2017-11-03"
+        startDate="2017-10-30" endDate="2017-11-03" duration="2"
         >
         <stepTitle>Student confirmation</stepTitle>
         <objective done="true">Get a confirmation on the task desc. doc. from student </objective>
@@ -140,7 +140,7 @@ xsi:schemaLocation="schema.xsd">
       </step>
 
       <step
-        startDate="2017-11-03" endDate="2017-11-10"
+        startDate="2017-11-03" endDate="2017-11-10" duration="2"
         >
         <stepTitle>Reg. ZPA</stepTitle>
         <objective done="true">Registre the Master thesis at ZPA.</objective>
@@ -168,27 +168,73 @@ xsi:schemaLocation="schema.xsd">
       </step>
 
       <step
-        startDate="2017-11-10" endDate="2018-03-20"
+        startDate="2017-11-10" endDate="2018-03-20" duration="2"
         >
         <stepTitle>Writing the thesis</stepTitle>
         <objective done="false">Writing a significant master thesis</objective>
         <problemStatement></problemStatement>
-        <subJourney>
-          <title>Writing a master thesis</title>
-          <goal>Write a good master thesis at VSR</goal>
+        <subJourney id="secondory" type="loop"> 
+          <title>Writing a master thesis subJourney</title>
+          <goal>write the thesis</goal>
           <steps>
             <step
-              startDate="2017-11-10" endDate="2017-11-10"
+              startDate="2017-11-10" endDate="2017-11-10" duration="2"
               >
-              <stepTitle>Step 1 in writing thesis</stepTitle>
-              <objective done="false">Find new topic related to business management</objective>
+              <stepTitle>SOTA</stepTitle>
+              <objective done="false">Some objective for SOTA !!</objective>
+              <problemStatement>some problem statement</problemStatement>
+              <results>
+                <result achieved="false">
+                  <resultTitle>result 1</resultTitle>
+                  <tasks>
+                    <task assignee="person1" done="not">
+                      <taskTitle>task1</taskTitle>
+                    </task>
+                    <task assignee="person2" done="not">
+                      <taskTitle>task2</taskTitle>
+                    </task>
+                  </tasks>
+                </result>
+                <result achieved="false">
+                  <resultTitle>result 2</resultTitle>
+                  <tasks>
+                    <task assignee="person1" done="not">
+                      <taskTitle>task1</taskTitle>
+                    </task>
+                    <task assignee="person2" done="not">
+                      <taskTitle>task2</taskTitle>
+                    </task>
+                  </tasks>
+                </result>
+              </results>
+              
+            </step>
+            <step
+              startDate="2017-11-10" endDate="2017-11-10" duration="2"
+              >
+              <stepTitle>Introduction</stepTitle>
+              <objective done="false">Some objective for SOTA !!</objective>
               <problemStatement></problemStatement>
               <results>
                 <result achieved="false">
-                  <resultTitle></resultTitle>
+                  <resultTitle>result 1</resultTitle>
                   <tasks>
-                    <task assignee="" done="not">
-                      <taskTitle></taskTitle>
+                    <task assignee="person1" done="not">
+                      <taskTitle>task1</taskTitle>
+                    </task>
+                    <task assignee="person2" done="not">
+                      <taskTitle>task2</taskTitle>
+                    </task>
+                  </tasks>
+                </result>
+                <result achieved="false">
+                  <resultTitle>result 2</resultTitle>
+                  <tasks>
+                    <task assignee="person1" done="not">
+                      <taskTitle>task1</taskTitle>
+                    </task>
+                    <task assignee="person2" done="not">
+                      <taskTitle>task2</taskTitle>
                     </task>
                   </tasks>
                 </result>
@@ -199,7 +245,7 @@ xsi:schemaLocation="schema.xsd">
       </step>
 
       <step
-        startDate="2018-03-22" endDate="2018-03-24"
+        startDate="2018-03-22" endDate="2018-03-24" duration="2"
         >
         <stepTitle>Print it</stepTitle>
         <objective done="false">Having printed copies of the master thesis</objective>
@@ -230,7 +276,7 @@ xsi:schemaLocation="schema.xsd">
       </step>
 
       <step
-        startDate="2018-03-22" endDate="2018-03-29"
+        startDate="2018-03-22" endDate="2018-03-29" duration="2"
         >
         <stepTitle>Create Presentation</stepTitle>
         <objective done="false">Having a very good presentation</objective>
@@ -305,7 +351,7 @@ xsi:schemaLocation="schema.xsd">
       </step>
 
       <step
-        startDate="2018-04-01" endDate="2018-04-01"
+        startDate="2018-04-01" endDate="2018-04-01" duration="2"
         >
         <stepTitle>Defence</stepTitle>
         <objective done="false">Find new topic related to business management</objective>
@@ -323,6 +369,6 @@ xsi:schemaLocation="schema.xsd">
       </step>
 
     </steps>
-  </journey>
+  </journey>  
 </journeys>
 </account>

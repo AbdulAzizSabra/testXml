@@ -1,0 +1,75 @@
+import React from 'react';
+import Comp1 from './Comp1';
+import {
+  Accordion,
+  Icon,
+  Divider,
+  Segment,
+  Header,
+  Label,
+  Tab,
+  Menu,
+  List,
+  Form,
+  Image,
+  Checkbox
+} from 'semantic-ui-react';
+import { Tasks } from './Tasks';
+
+export class StepDetails extends React.Component {
+  renderResult = () => {
+    if (Array.isArray(this.props.step.results.result)) {
+      return this.props.step.results.result.map((result, index) => {
+        return {
+          menuItem: (
+            <Menu.Item>
+              {result.resultTitle._text} &nbsp;{' '}
+              <Icon color="green" name="checkmark" />
+            </Menu.Item>
+          ),
+          render: () => (
+            <Tab.Pane>
+              {' '}
+              <Tasks task={result.tasks.task} />
+            </Tab.Pane>
+          )
+        };
+      });
+    }
+    return [
+      {
+        menuItem: (
+          <Menu.Item>
+            {this.props.step.results.result.resultTitle._text} &nbsp;{' '}
+            <Icon color="green" name="checkmark" />
+          </Menu.Item>
+        ),
+        render: () => (
+          <Tab.Pane>
+            {' '}
+            <Tasks task={this.props.step.results.result.tasks.task} />
+          </Tab.Pane>
+        )
+      }
+    ];
+  };
+  render() {
+    return [
+      <Segment color="green">
+        <Header> Objective</Header>
+        <p>{this.props.step.objective._text}</p>
+      </Segment>,
+      <Segment color="red">
+        <Header> Problem Statement</Header>
+        <p>{this.props.step.problemStatement._text}</p>
+      </Segment>,
+      <Segment color="blue">
+        <Header>Results</Header>
+        <Tab
+          menu={{ fluid: true, vertical: true, tabular: 'right' }}
+          panes={this.renderResult()}
+        />
+      </Segment>
+    ];
+  }
+}
