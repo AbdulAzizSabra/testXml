@@ -11,15 +11,22 @@ import {
   List,
   Form,
   Image,
-  Checkbox
+  Checkbox,
+  Progress
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { StepDetails } from './StepDetails';
+import { SubJourney } from './SubJourney';
 
 class Comp1 extends React.Component {
   state = { activeIndex: -1 };
 
+  componentDidMount() {
+    if (this.props.calculateDetails) {
+      this.props.calculateDetails(this.props.journey);
+    }
+  }
   handleClick = (e, titleProps) => {
     const { index } = titleProps;
     const { activeIndex } = this.state;
@@ -28,10 +35,12 @@ class Comp1 extends React.Component {
     this.setState({ activeIndex: newIndex });
   };
   render() {
-    if (!this.props.journey) return null;
-
     const currentJourney = this.props.journey;
-    console.log(currentJourney);
+    const journeyDetails = this.props.details.find(
+      item => item.id === currentJourney._attributes.id
+    );
+    console.log(journeyDetails);
+    if (!journeyDetails) return null;
     const { activeIndex } = this.state;
     let icon;
     switch (currentJourney._attributes.type) {
@@ -53,6 +62,9 @@ class Comp1 extends React.Component {
         </Header>
         <Accordion fluid styled>
           {currentJourney.steps.step.map((step, index) => {
+            const details = journeyDetails.stepsDetails.find(
+              item => item.index === index
+            );
             return (
               <div key={`index.${index}`}>
                 <Accordion.Title
@@ -85,20 +97,38 @@ class Comp1 extends React.Component {
                 </Accordion.Title>
                 <Accordion.Content active={activeIndex === index}>
                   {step.hasOwnProperty('subJourney') ? (
-                    <Comp1 journey={step.subJourney} />
+                    <SubJourney journey={step.subJourney} />
                   ) : (
-                    <StepDetails step={step} />
+                    <StepDetails step={step} details={details} />
                   )}
                 </Accordion.Content>
               </div>
             );
           })}
         </Accordion>
+
+        <Segment>
+          <Header>Some Details on the Journey</Header>
+          <Progress
+            value={journeyDetails.achievedObjectives}
+            total={currentJourney.steps.step.length}
+            progress="ratio"
+          >
+            Objectives
+          </Progress>
+          <Progress
+            value={journeyDetails.achievedResults}
+            total={journeyDetails.allResults}
+            progress="ratio"
+          >
+            Results
+          </Progress>
+        </Segment>
       </div>
     );
   }
 }
-function mapStateToProps({ journeys }) {
-  return { journeys };
+function mapStateToProps({ journeys, details }) {
+  return { journeys, details };
 }
-export default connect(mapStateToProps, { actions })(Comp1);
+export default connect(mapStateToProps, actions)(Comp1);

@@ -12,7 +12,8 @@ import {
   List,
   Form,
   Image,
-  Checkbox
+  Checkbox,
+  Progress
 } from 'semantic-ui-react';
 import { Tasks } from './Tasks';
 
@@ -69,6 +70,23 @@ export class StepDetails extends React.Component {
           menu={{ fluid: true, vertical: true, tabular: 'right' }}
           panes={this.renderResult()}
         />
+      </Segment>,
+      <Segment>
+        <Header>Some Details on this Step</Header>
+        <Progress
+          value={this.props.details.doneResults}
+          total={this.props.details.allResults}
+          progress="ratio"
+        >
+          Results
+        </Progress>
+        <Progress
+          value={this.props.details.tasks.done}
+          total={this.props.details.tasks.all}
+          progress="ratio"
+        >
+          Tasks
+        </Progress>
       </Segment>
     ];
   }

@@ -35,6 +35,7 @@ export function headerSelect(title) {
 }
 
 export function calculateDetails(journey) {
+  console.log('enter action', journey);
   let achievedObjectives = 0;
   let allResults = 0;
   let achievedResults = 0;
