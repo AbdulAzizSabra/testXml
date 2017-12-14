@@ -17,6 +17,7 @@ import Comp1 from './components/Comp1';
 import Gantt from './Gantt';
 import { css } from 'glamor';
 import { Content } from './components/Content';
+import { Management } from './components/Management';
 
 class App extends Component {
   constructor(props) {
@@ -54,9 +55,12 @@ class App extends Component {
             <Icon name="gamepad" />
             Templates
           </Menu.Item>
-          <Menu.Item name="camera">
+          <Menu.Item
+            name="camera"
+            onClick={() => this.props.history.push('/management')}
+          >
             <Icon name="camera" />
-            Deliverables
+            Management
           </Menu.Item>
         </Sidebar>
         <Sidebar.Pusher {...css({ height: '100%' })}>
@@ -150,12 +154,23 @@ class App extends Component {
                   </List.Item>
                 </List>
               </Grid.Column>
-              <Grid.Column width={7}>
-                <Content />
-              </Grid.Column>
-              <Grid.Column width={6}>
-                <Segment>Meta Data</Segment>
-              </Grid.Column>
+              <Switch>
+                <Route
+                  path="/"
+                  exact
+                  render={() => {
+                    return [
+                      <Grid.Column width={7}>
+                        <Content />
+                      </Grid.Column>,
+                      <Grid.Column width={6}>
+                        <Segment>Meta Data</Segment>
+                      </Grid.Column>
+                    ];
+                  }}
+                />
+                <Route path="/management" component={Management} />
+              </Switch>
             </Grid.Row>
 
             {/* <Grid.Column width={12}>

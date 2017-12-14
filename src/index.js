@@ -14,10 +14,7 @@ const store = createStore(reducers);
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={App} />
-        <Route path="/management" component={Management} />
-      </Switch>
+      <Route path="/" component={App} />
     </BrowserRouter>
   </Provider>,
   document.getElementById('container')

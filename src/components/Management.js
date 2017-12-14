@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Grid } from 'semantic-ui-react';
 
 export class Management extends Component {
   render() {
-    return <div>Management View</div>;
+    return <Grid.Column width={13}>Management View</Grid.Column>;
   }
 }

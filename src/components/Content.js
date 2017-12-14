@@ -20,6 +20,7 @@ export class Content extends Component {
     this.state = {
       steps: [
         {
+          selected: false,
           title: 'step 1',
           type: 'step',
           id: 'step1id',
@@ -52,6 +53,7 @@ export class Content extends Component {
           meta: {}
         },
         {
+          selected: false,
           title: 'step 2',
           type: 'step',
           id: 'step2id',
@@ -87,10 +89,8 @@ export class Content extends Component {
     };
   }
   handle = event => {
-    console.log('hello');
     if (event.key == 'Enter') {
       event.preventDefault();
-      //console.log(event.target);
       event.target.blur();
       event.target.contentEditable = false;
       const elm = document.getElementById('stepInput');
@@ -103,38 +103,63 @@ export class Content extends Component {
     event.target.contentEditable = true;
   };
   handleDismiss = () => {};
+  handleSelect = stepId => {
+    let currentState = this.state;
+
+    const index = currentState.steps.findIndex(step => {
+      return step.id === stepId;
+    });
+    currentState.steps[index].selected = !currentState.steps[index].selected;
+    this.setState(currentState);
+  };
   renderSteps = () => {
-    this.state.steps.map(step => {
+    return this.state.steps.map(step => {
       return (
-        <Message
-          icon
-          onClick={() => {}}
-          onDismiss={this.handleDismiss}
-          floating={this.state.selected}
-          size="small"
-          color="teal"
-          key={step.id}
-        >
-          <Icon name="marker" size="tiny" color="red" />
-          <Message.Content
-            onDoubleClick={this.handleEdit}
-            onKeyPress={this.handle}
+        <Container {...css({ paddingBottom: '10px' })}>
+          <Message
+            icon
+            onClick={() => this.handleSelect(step.id)}
+            onDismiss={this.handleDismiss}
+            floating={step.selected}
+            size="small"
+            color={step.selected ? 'teal' : ''}
+            key={step.id}
           >
-            {step.title}
-          </Message.Content>
-          <Popup
-            trigger={<Icon name="add" link color="green" />}
-            content="add results"
-            basic
-          />
-          <Dropdown icon="ellipsis vertical">
-            <Dropdown.Menu>
-              <Dropdown.Item text="Option 1" />
-              <Dropdown.Item text="Option 2" />
-              <Dropdown.Item text="Option 3" />
-            </Dropdown.Menu>
-          </Dropdown>
-        </Message>
+            <Icon name="marker" size="tiny" color="red" />
+            <Message.Content
+              onDoubleClick={this.handleEdit}
+              onKeyPress={this.handle}
+            >
+              {step.title}
+            </Message.Content>
+            <Popup
+              trigger={<Icon name="add" link color="green" />}
+              content="add results"
+              basic
+            />
+            <Dropdown icon="ellipsis vertical">
+              <Dropdown.Menu>
+                <Dropdown.Item text="Option 1" />
+                <Dropdown.Item text="Option 2" />
+                <Dropdown.Item text="Option 3" />
+              </Dropdown.Menu>
+            </Dropdown>
+          </Message>
+          {step.selected ? (
+            <Container {...css({ paddingLeft: '40px' })}>
+              {step.results.map(result => {
+                return (
+                  <Card
+                    fluid
+                    color="red"
+                    header={result.title}
+                    key={result.id}
+                  />
+                );
+              })}
+            </Container>
+          ) : null}
+        </Container>
       );
     });
   };
@@ -163,14 +188,9 @@ export class Content extends Component {
             <Icon name="road" />
             <Header.Content>Steps</Header.Content>
           </Header>
-          {/* <Message
-            floating
-            content="Way to go!"
-            contenteditable="true"
-            data-id="myid"
-          /> */}
+          {this.renderSteps()}
 
-          <Message
+          {/* <Message
             icon
             onClick={() => this.setState({ selected: !this.state.selected })}
             onDismiss={this.handleDismiss}
@@ -209,7 +229,7 @@ export class Content extends Component {
             <Message color="red">Result</Message>
             <Message color="red">Result</Message>
             <Message color="red">Result</Message>
-          </Container>
+          </Container> */}
           <Input
             fluid
             placeholder="Search..."
