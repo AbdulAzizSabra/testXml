@@ -53,10 +53,10 @@ class Gantt extends Component {
     gantt.config.scale_unit = 'month';
     gantt.config.date_scale = '%F, %Y';
 
-    gantt.config.subscales = [
-      { unit: 'week', step: 1, date: '%W' },
-      { unit: 'day', step: 1, date: '%D' }
-    ];
+    // gantt.config.subscales = [
+    //   { unit: 'week', step: 1, date: '%W' },
+    //   { unit: 'day', step: 1, date: '%D' }
+    // ];
     gantt.init(this.ganttContainer);
     gantt.parse(data);
   }

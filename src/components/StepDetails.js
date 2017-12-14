@@ -55,39 +55,47 @@ export class StepDetails extends React.Component {
     ];
   };
   render() {
-    return [
-      <Segment color="green">
-        <Header> Objective</Header>
-        <p>{this.props.step.objective._text}</p>
-      </Segment>,
-      <Segment color="red">
-        <Header> Problem Statement</Header>
-        <p>{this.props.step.problemStatement._text}</p>
-      </Segment>,
-      <Segment color="blue">
-        <Header>Results</Header>
-        <Tab
-          menu={{ fluid: true, vertical: true, tabular: 'right' }}
-          panes={this.renderResult()}
-        />
-      </Segment>,
-      <Segment>
-        <Header>Some Details on this Step</Header>
-        <Progress
-          value={this.props.details.doneResults}
-          total={this.props.details.allResults}
-          progress="ratio"
-        >
-          Results
-        </Progress>
-        <Progress
-          value={this.props.details.tasks.done}
-          total={this.props.details.tasks.all}
-          progress="ratio"
-        >
-          Tasks
-        </Progress>
-      </Segment>
-    ];
+    return (
+      <div>
+        {this.props.step.objective ? (
+          <Segment color="green">
+            <Header> Objective</Header>
+            <p>{this.props.step.objective._text}</p>
+          </Segment>
+        ) : null}
+        {this.props.step.problemStatement ? (
+          <Segment color="red">
+            <Header> Problem Statement</Header>
+            <p>{this.props.step.problemStatement._text}</p>
+          </Segment>
+        ) : null}
+        <Segment color="blue">
+          <Header>Results</Header>
+          <Tab
+            menu={{ fluid: true, vertical: true, tabular: 'right' }}
+            panes={this.renderResult()}
+          />
+        </Segment>
+        {this.props.details ? (
+          <Segment>
+            <Header>Some Details on this Step</Header>
+            <Progress
+              value={this.props.details.doneResults}
+              total={this.props.details.allResults}
+              progress="ratio"
+            >
+              Results
+            </Progress>
+            <Progress
+              value={this.props.details.tasks.done}
+              total={this.props.details.tasks.all}
+              progress="ratio"
+            >
+              Tasks
+            </Progress>
+          </Segment>
+        ) : null}
+      </div>
+    );
   }
 }

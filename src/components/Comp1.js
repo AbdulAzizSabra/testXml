@@ -18,6 +18,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { StepDetails } from './StepDetails';
 import { SubJourney } from './SubJourney';
+import { Iterations } from './Iterations';
 
 class Comp1 extends React.Component {
   state = { activeIndex: -1 };
@@ -39,7 +40,6 @@ class Comp1 extends React.Component {
     const journeyDetails = this.props.details.find(
       item => item.id === currentJourney._attributes.id
     );
-    console.log(journeyDetails);
     if (!journeyDetails) return null;
     const { activeIndex } = this.state;
     let icon;
@@ -47,13 +47,40 @@ class Comp1 extends React.Component {
       case 'seq':
         icon = <Icon name="arrow down" />;
         break;
-      case 'loop':
+      case 'loop-seq' || 'loop-par' || 'loop-rand':
         icon = <Icon name="repeat" />;
         break;
       case 'parallel':
         icon = <Icon name="unordered list" />;
         break;
     }
+
+    const panes = [
+      {
+        menuItem: 'Milestone 1',
+        render: () => (
+          <Tab.Pane>
+            References to results and the date of the milestone
+          </Tab.Pane>
+        )
+      },
+      {
+        menuItem: 'Milestone 2',
+        render: () => (
+          <Tab.Pane>
+            References to results and the date of the milestone
+          </Tab.Pane>
+        )
+      },
+      {
+        menuItem: 'Milestone 3',
+        render: () => (
+          <Tab.Pane>
+            References to results and the date of the milestone
+          </Tab.Pane>
+        )
+      }
+    ];
 
     return (
       <div>
@@ -123,6 +150,14 @@ class Comp1 extends React.Component {
           >
             Results
           </Progress>
+        </Segment>
+        {currentJourney.hasOwnProperty('iterations') ? (
+          <Iterations iterations={currentJourney.iterations} />
+        ) : null}
+
+        <Segment>
+          <Header>Milestones</Header>
+          <Tab panes={panes} />
         </Segment>
       </div>
     );

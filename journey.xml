@@ -40,52 +40,152 @@ xsi:schemaLocation="schema.xsd">
       <step
         startDate="2017-10-15" endDate="2017-10-20" duration="2"
         >
-        <stepTitle>Create Vision Doc</stepTitle>
+        
+        <stepTitle>Create refinded Vision Doc.</stepTitle>
         <objective done="true">create a well defined vision document </objective>
         <problemStatement>
           There are always missconception and misundertanding between what the student wants or sees and what professorship
           wants or sees, and therefore it's important that each party understands and agreeds on the same ideas
           to avoid any problem could appear later.
-      </problemStatement>
-        <results>
-          <result achieved="true">
-            <resultTitle>Well defined vision Doc. from 2 pages, describes the situation, the problem and the solution idea.</resultTitle>
-            <tasks>
-              <task assignee="student" done="done">
-                <taskTitle>Describe the current situation</taskTitle>
-              </task>
-              <task assignee="student" done="done">
-                <taskTitle>Describe what the current problem</taskTitle>
-              </task>
-              <task assignee="student" done="done">
-                <taskTitle>describe how we are going to solve the problem</taskTitle>
-              </task>
-            </tasks>
-          </result>
-        </results>
-      </step>
-
-      <step
-        startDate="2017-10-20" endDate="2017-10-27" duration="2"
-        >
-        <stepTitle>Send to VSR</stepTitle>
-        <objective done="true">Get a refinded Copy of vision document</objective>
-        <problemStatement>
-          Students always need to know if there vision is right or even if it's compatible with the vision of VSR.
         </problemStatement>
-        <results>
-          <result achieved="true">
-            <resultTitle>get a signed feedback from VSR within 2 weeks </resultTitle>
-            <tasks>
-              <task assignee="student" done="done">
-                <taskTitle>send vision doc. to vsr in email</taskTitle>
-              </task>
-              <task assignee="vsr" done="not">
-                <taskTitle>read the vision doc. and send back feedback to the student</taskTitle>
-              </task>
-            </tasks>
-          </result>
-        </results>
+        <subJourney id="third" type="loop-seq"> 
+          <title>Writing a master thesis subJourney</title>
+          <goal>write the thesis</goal>
+          <steps>
+            <step startDate="2017-10-15" endDate="2017-10-20" duration="2">
+              <stepTitle>Create Vision Doc</stepTitle>
+                <objective done="true">create a well defined vision document </objective>
+                <problemStatement>
+                  There are always missconception and misundertanding between what the student wants or sees and what professorship
+                  wants or sees, and therefore it's important that each party understands and agreeds on the same ideas
+                  to avoid any problem could appear later.
+                </problemStatement>
+                <results>
+                  <result achieved="true">
+                    <resultTitle> Well defined vision Doc. from 2 pages, describes the situation, the problem and the solution idea.</resultTitle>
+                    <tasks>
+                      <task assignee="student" done="done">
+                        <taskTitle>Describe the current situation</taskTitle>
+                      </task>
+                      <task assignee="student" done="done">
+                        <taskTitle>Describe what the current problem</taskTitle>
+                      </task>
+                      <task assignee="student" done="done">
+                        <taskTitle>describe how we are going to solve the problem</taskTitle>
+                      </task>
+                    </tasks>
+                  </result>
+                </results>
+            </step>
+            <step
+              startDate="2017-10-20" endDate="2017-10-27" duration="2"
+              >
+              <stepTitle>Send to VSR</stepTitle>
+              <objective done="true">Get a refinded Copy of vision document</objective>
+              <problemStatement>
+                Students always need to know if there vision is right or even if it's compatible with the vision of VSR.
+              </problemStatement>
+              <results>
+                <result achieved="true">
+                  <resultTitle>get a signed feedback from VSR within 2 weeks </resultTitle>
+                  <tasks>
+                    <task assignee="student" done="done">
+                      <taskTitle>send vision doc. to vsr in email</taskTitle>
+                    </task>
+                    <task assignee="vsr" done="not">
+                      <taskTitle>read the vision doc. and send back feedback to the student</taskTitle>
+                    </task>
+                  </tasks>
+                </result>
+              </results>
+            </step>
+          </steps>
+          <iterations>
+            <iteration iteNumber="1">
+              <steps>
+                <step>
+                  <stepTitle>Create Vision Doc</stepTitle>
+                  <results>
+                  <result achieved="true">
+                    <resultTitle> V1.0 Well defined vision Doc. from 2 pages, describes the situation, the problem and the solution idea.</resultTitle>
+                    <tasks>
+                      <task assignee="student" done="done">
+                        <taskTitle>Describe the current situation</taskTitle>
+                      </task>
+                      <task assignee="student" done="done">
+                        <taskTitle>Describe what the current problem</taskTitle>
+                      </task>
+                      <task assignee="student" done="done">
+                        <taskTitle>describe how we are going to solve the problem</taskTitle>
+                      </task>
+                    </tasks>
+                  </result>
+                </results>
+                </step>
+
+                <step>
+                  <stepTitle>Send to VSR</stepTitle>
+                  <results>
+                    <result achieved="true">
+                      <resultTitle> V1.0 Get a signed feedback from VSR within 2 weeks </resultTitle>
+                      <tasks>
+                        <task assignee="student" done="done">
+                          <taskTitle>send vision doc. to vsr in email</taskTitle>
+                        </task>
+                        <task assignee="vsr" done="not">
+                          <taskTitle>read the vision doc. and send back feedback to the student</taskTitle>
+                        </task>
+                      </tasks>
+                    </result>
+                  </results>
+                </step>
+
+              </steps>
+            </iteration>
+            <iteration iteNumber="2">
+              <steps>
+                <step>
+                  <stepTitle>Create Vision Doc</stepTitle>
+                  <results>
+                  <result achieved="true">
+                    <resultTitle>V2.0 Well defined vision Doc. from 2 pages, describes the situation, the problem and the solution idea.</resultTitle>
+                    <tasks>
+                      <task assignee="student" done="done">
+                        <taskTitle>Describe the current situation</taskTitle>
+                      </task>
+                      <task assignee="student" done="done">
+                        <taskTitle>Describe what the current problem</taskTitle>
+                      </task>
+                      <task assignee="student" done="done">
+                        <taskTitle>describe how we are going to solve the problem</taskTitle>
+                      </task>
+                    </tasks>
+                  </result>
+                </results>
+                </step>
+
+                <step>
+                  <stepTitle>Send to VSR</stepTitle>
+                  <results>
+                    <result achieved="true">
+                      <resultTitle> V2.0 Get a signed feedback from VSR within 2 weeks </resultTitle>
+                      <tasks>
+                        <task assignee="student" done="done">
+                          <taskTitle>send vision doc. to vsr in email</taskTitle>
+                        </task>
+                        <task assignee="vsr" done="not">
+                          <taskTitle>read the vision doc. and send back feedback to the student</taskTitle>
+                        </task>
+                      </tasks>
+                    </result>
+                  </results>
+                </step>
+
+              </steps>
+            </iteration>
+          </iterations>
+        </subJourney>
+        
       </step>
 
       <step
@@ -126,7 +226,7 @@ xsi:schemaLocation="schema.xsd">
           or the student or VSR said that is not what we agreed on, signed confirmation from the student is required.
         </problemStatement>
         <results>
-          <result achieved="done">
+          <result achieved="true">
             <resultTitle>
               Signed confirmation from the student on the task desc. withing the next x days
             </resultTitle>
@@ -173,7 +273,7 @@ xsi:schemaLocation="schema.xsd">
         <stepTitle>Writing the thesis</stepTitle>
         <objective done="false">Writing a significant master thesis</objective>
         <problemStatement></problemStatement>
-        <subJourney id="secondory" type="loop"> 
+        <subJourney id="secondory" type="loop-seq"> 
           <title>Writing a master thesis subJourney</title>
           <goal>write the thesis</goal>
           <steps>
